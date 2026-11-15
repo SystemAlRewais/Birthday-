@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#f7dce8">
+<title>مريوم | يومك الحلو</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Amiri:wght@400;700&display=swap');
+:root{--pink:#f3a9c7;--deep:#a83f70;--plum:#55334f;--cream:#fff9fb}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:linear-gradient(145deg,#fff8fb,#fce5ef 48%,#eee4f8);color:var(--plum);font-family:'Cairo',sans-serif;overflow-x:hidden}
+button{font:inherit;cursor:pointer}.hidden{display:none!important}
+#gate{min-height:100svh;display:grid;place-items:center;padding:24px;position:relative;overflow:hidden}
+.glow{position:absolute;border-radius:50%;filter:blur(2px);opacity:.55;pointer-events:none}.g1{width:280px;height:280px;background:#f8c4dc;top:-80px;right:-90px}.g2{width:230px;height:230px;background:#d9c8f2;bottom:-70px;left:-70px}
+.gate-card,.glass{background:#ffffffb8;border:1px solid #fff;box-shadow:0 20px 70px #9b55751c;backdrop-filter:blur(16px);border-radius:30px}
+.gate-card{width:min(100%,430px);padding:38px 26px;text-align:center;position:relative;z-index:1}
+.heart{font-size:54px;display:inline-block;animation:beat 1.2s infinite}.eyebrow{color:#b56a8b;font-size:12px;letter-spacing:2px;font-weight:800}
+h1,h2,p{margin-top:0}h1{font-size:clamp(30px,8vw,43px);line-height:1.35;margin:10px 0;color:#8e3e68}
+.sub{color:#8c7181;line-height:1.9;font-size:14px}
+.pass{width:100%;border:1px solid #efd0df;background:#fff9fc;border-radius:16px;padding:15px;text-align:center;font:700 18px 'Cairo';outline:none;color:#8e3e68;direction:ltr}
+.pass:focus{border-color:#ce83a6;box-shadow:0 0 0 4px #f5dce8}
+.primary{border:0;border-radius:999px;padding:13px 28px;background:linear-gradient(120deg,#e58db2,#a75a92);color:white;font-weight:800;box-shadow:0 9px 22px #bc6c982f;transition:.2s}
+.primary:hover{transform:translateY(-2px);filter:brightness(1.04)}.error{color:#b33c64;min-height:25px;font-size:13px;margin:10px 0 0}
+#site{max-width:850px;margin:auto;padding:24px 18px 70px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:12px;color:#9d6683}
+.pill{border:1px solid #efd4e2;background:#ffffff9c;border-radius:99px;padding:7px 13px}
+.hero{text-align:center;padding:62px 12px 48px;position:relative}
+.hero .big{font-size:70px;animation:float 3s ease-in-out infinite}
+.hero h1{font-size:clamp(38px,10vw,66px);margin:5px 0}
+.hero p{font-size:16px;color:#886c7e;line-height:2}
+.hero .date{display:inline-block;margin-top:8px;padding:8px 18px;border-radius:99px;background:#fff9;border:1px solid white;color:#9b5478;font-weight:800}
+.section{padding:25px 0}.section-title{text-align:center;font-size:25px;color:#914b70;margin-bottom:8px}
+.section-note{text-align:center;color:#987f8f;font-size:13px;margin-bottom:22px}
+.card{padding:25px;background:#ffffffad;border:1px solid #fff;border-radius:25px;box-shadow:0 12px 35px #9b557511}
+.wish{text-align:center;font-family:'Amiri',serif;font-size:27px;line-height:1.9;color:#8e416a}
+.memory{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:center}
+.photo{min-height:230px;border:2px dashed #e7b8ce;border-radius:20px;background:linear-gradient(140deg,#fff4f8,#f0e8fa);display:grid;place-items:center;overflow:hidden;text-align:center;padding:14px;color:#a16c87}
+.photo img{width:100%;height:100%;max-height:300px;object-fit:cover;border-radius:15px}
+.upload{display:inline-block;margin-top:12px;color:#a04f78;text-decoration:underline;font-size:13px;cursor:pointer}
+textarea{width:100%;min-height:125px;border:1px solid #efd3e1;border-radius:16px;background:#fffafd;padding:14px;font:15px 'Cairo';resize:vertical;color:#65465a;outline:none}
+.memory-text{line-height:2;color:#816879;font-size:14px}
+.envelope-wrap{text-align:center;padding:15px 0 5px}
+.envelope{width:190px;height:130px;margin:25px auto 15px;position:relative;background:#e9a9c4;border-radius:9px;cursor:pointer;box-shadow:0 12px 24px #9b55752b;transition:.3s}
+.envelope:before{content:"";position:absolute;inset:0;background:#f3c5d8;clip-path:polygon(0 0,50% 57%,100% 0);transform-origin:top;transition:.5s;z-index:2}
+.envelope:after{content:"";position:absolute;inset:0;background:#dc8fb2;clip-path:polygon(0 100%,50% 48%,100% 100%);border-radius:0 0 9px 9px}
+.envelope.open:before{transform:rotateX(180deg)}
+.letter{max-height:0;overflow:hidden;transition:max-height .8s ease;padding:0 18px;background:#fff9fc;border-radius:18px}
+.letter.show{max-height:450px;padding:23px 18px;border:1px solid #f0d3e0}
+.letter p{font-family:'Amiri',serif;font-size:24px;line-height:1.9;color:#8e416a;margin:0}
+.footer{text-align:center;padding:40px 10px;color:#a47c91;font-size:12px}
+.heart-float{position:fixed;bottom:-30px;z-index:5;pointer-events:none;animation:rise linear forwards}
+#confetti{position:fixed;inset:0;pointer-events:none;z-index:10}
+@keyframes beat{50%{transform:scale(1.16)}}@keyframes float{50%{transform:translateY(-12px)}}@keyframes rise{to{transform:translateY(-110vh) rotate(25deg);opacity:0}}
+@media(max-width:600px){.memory{grid-template-columns:1fr}.photo{min-height:190px}.hero{padding-top:48px}.wish{font-size:24px}}
+</style>
+</head>
+<body>
+<div id="gate">
+ <div class="glow g1"></div><div class="glow g2"></div>
+ <main class="gate-card">
+  <div class="heart">💗</div><div class="eyebrow">A LITTLE SURPRISE FOR YOU</div>
+  <h1>في مفاجأة مستنياكي<br>يا مريوم!</h1>
+  <p class="sub">بس الأول… اكتبي كلمة السر عشان نفتح الهدية 🎁</p>
+  <form id="unlockForm">
+   <input class="pass" id="password" type="password" placeholder="Password" autocomplete="off" aria-label="كلمة السر">
+   <button class="primary" style="width:100%;margin-top:14px" type="submit">افتحي المفاجأة 💝</button>
+   <div class="error" id="error" aria-live="polite"></div>
+  </form>
+  <div class="sub">تلميح صغير: كلمة من 4 حروف 😉</div>
+ </main>
+</div>
+<canvas id="confetti"></canvas>
+<main id="site" class="hidden">
+ <div class="top"><span class="pill">💌 A page made with love</span><span>13 · 02 · 2008</span></div>
+ <header class="hero">
+  <div class="big">🎂</div>
+  <div class="eyebrow">HAPPY BIRTHDAY</div>
+  <h1>كل سنة وانتي طيبة<br>يا مريوم 💗</h1>
+  <p>النهارده يوم مميز… عشان هو اليوم اللي الدنيا نورت فيه بوجودك.</p>
+  <span class="date">13 فبراير 2008 · يوم ميلاد مريم</span>
+ </header>
+ <section class="section">
+  <div class="card">
+   <div class="section-title">أمنية من القلب ✨</div>
+   <p class="wish">كل سنة وانتي طيبة يا مريوم، وعقبال 100 سنة، ودايمًا في سعادة وفرحة وراحة بال. يا رب كل أيامك تبقى حلوة شبه قلبك، وتفضلي دايمًا مبتسمة ومنورة الدنيا ❤️</p>
+  </div>
+ </section>
+ <section class="section">
+  <h2 class="section-title">لحظة حلوة بينا 📸</h2>
+  <p class="section-note">مكان لذكرى تستاهل تفضل عايشة… صورة أو حكاية صغيرة</p>
+  <div class="card memory">
+   <div class="photo" id="photoBox"><div>🌷<br><strong>صورتنا أو ذكرياتنا هنا</strong><br><small>اختار صورة من موبايلك</small><br><label class="upload" for="photoInput">إضافة صورة</label></div></div>
+   <div>
+    <p class="memory-text" id="memoryText">في لحظات بسيطة بتفضل محفورة جوانا… ضحكة، كلمة، موقف عفوي، أو يوم كان كله حلو لمجرد إننا عشناه. هنا هنحط ذكرى من أجمل ذكرياتنا سوا 💞</p>
+    <label class="upload" for="memoryInput">تعديل رسالة الذكرى</label>
+    <textarea id="memoryInput" class="hidden" placeholder="اكتب الذكرى الحلوة هنا…"></textarea>
+    <button class="primary hidden" id="saveMemory" style="margin-top:8px">حفظ الذكرى</button>
+   </div>
+   <input id="photoInput" type="file" accept="image/*" class="hidden">
+  </div>
+ </section>
+ <section class="section">
+  <h2 class="section-title">رسالة متروكة ليكي 💌</h2>
+  <p class="section-note">في ظرف صغير مستخبي جواه كلام مخصوص… دوسي عليه</p>
+  <div class="card envelope-wrap">
+   <div class="envelope" id="envelope" role="button" tabindex="0" aria-label="افتحي الظرف"><span style="position:absolute;z-index:3;top:42px;left:0;right:0;font-size:32px">💗</span></div>
+   <strong style="color:#9b5478">اضغطي على الظرف لفتح الرسالة</strong>
+   <div class="letter" id="letter"><p>يا مريوم،<br>يمكن الكلام مهما كان مش هيكفي يوصف قد إيه أتمنى أشوفك دايمًا مبسوطة. خلي ضحكتك منورة أيامك، ومتخليش حاجة تطفي فرحتك. أتمنالك سنة جديدة مليانة حاجات حلوة ونجاحات ومفاجآت جميلة… وتفضلي دايمًا بخير وسعادة. 💗</p><div style="margin-top:12px;color:#b47794">With love ♡</div></div>
+  </div>
+ </section>
+ <footer class="footer">اتعملت بكل حب عشان يومك يبقى أحلى 🎀<br>Made for Mariam · 13.02.2008</footer>
+</main>
+<script>
+const $=id=>document.getElementById(id);
+$('unlockForm').addEventListener('submit',e=>{
+ e.preventDefault();
+ if($('password').value.trim().toLowerCase()==='love'){
+  $('gate').classList.add('hidden');$('site').classList.remove('hidden');celebrate();setInterval(floatHeart,850);
+ }else{$('error').textContent='مش هي دي كلمة السر يا مريوم 🙈 جربي تاني';$('password').value='';}
+});
+function floatHeart(){const h=document.createElement('div');h.className='heart-float';h.textContent=['💗','💕','💖','✨','🌸'][Math.floor(Math.random()*5)];h.style.left=Math.random()*100+'vw';h.style.fontSize=(16+Math.random()*20)+'px';h.style.animationDuration=(5+Math.random()*4)+'s';document.body.appendChild(h);setTimeout(()=>h.remove(),9500)}
+function celebrate(){
+ const c=$('confetti'),ctx=c.getContext('2d');c.width=innerWidth;c.height=innerHeight;
+ const bits=Array.from({length:170},()=>({x:Math.random()*c.width,y:-Math.random()*c.height,v:2+Math.random()*5,s:3+Math.random()*5,a:Math.random()*6.28}));
+ let frames=0;function draw(){ctx.clearRect(0,0,c.width,c.height);bits.forEach(b=>{ctx.save();ctx.translate(b.x,b.y);ctx.rotate(b.a);ctx.fillStyle=['#e88db5','#c9a7e8','#f7c96c','#fff'][Math.floor(Math.random()*4)];ctx.fillRect(0,0,b.s,b.s*1.6);ctx.restore();b.y+=b.v;b.x+=Math.sin(b.y/35);b.a+=.04});if(++frames<180)requestAnimationFrame(draw);else ctx.clearRect(0,0,c.width,c.height)}draw();
+}
+$('photoInput').addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;const img=document.createElement('img');img.alt='ذكرى جميلة';img.src=URL.createObjectURL(f);$('photoBox').replaceChildren(img)});
+$('memoryInput').value=$('memoryText').textContent;
+document.querySelector('label[for="memoryInput"]').addEventListener('click',()=>{$('memoryInput').classList.remove('hidden');$('saveMemory').classList.remove('hidden')});
+$('saveMemory').addEventListener('click',()=>{$('memoryText').textContent=$('memoryInput').value;$('memoryInput').classList.add('hidden');$('saveMemory').classList.add('hidden')});
+function openLetter(){const opened=$('letter').classList.toggle('show');$('envelope').classList.toggle('open',opened)}
+$('envelope').addEventListener('click',openLetter);$('envelope').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openLetter()}});
+window.addEventListener('resize',()=>{const c=$('confetti');c.width=innerWidth;c.height=innerHeight});
+</script>
+</body>
+</html>
