@@ -48,7 +48,9 @@ textarea{width:100%;min-height:125px;border:1px solid #efd3e1;border-radius:16px
 .letter{max-height:0;overflow:hidden;transition:max-height .8s ease;padding:0 18px;background:#fff9fc;border-radius:18px}
 .letter.show{max-height:450px;padding:23px 18px;border:1px solid #f0d3e0}
 .letter p{font-family:'Amiri',serif;font-size:24px;line-height:1.9;color:#8e416a;margin:0}
-.footer{text-align:center;padding:40px 10px;color:#a47c91;font-size:12px}\n.notice{margin:20px 0 0;padding:22px 20px;border:1px solid #e8bfd1;border-radius:22px;background:#fff8fb;color:#755064;line-height:2;font-size:13px;text-align:right;white-space:pre-line}\n.notice strong{display:block;color:#9b416e;font-size:16px;margin-bottom:8px}
+.footer{text-align:center;padding:40px 10px;color:#a47c91;font-size:12px}\n
+.demo-banner{margin:14px auto 0;width:min(calc(100% - 28px),850px);padding:12px 16px;border:1px solid #e6b7cd;border-radius:14px;background:linear-gradient(120deg,#fff1f7,#f5eafa);color:#914b70;text-align:center;font:800 14px 'Cairo',sans-serif;box-shadow:0 8px 24px #9b557511}
+.notice{margin:20px 0 0;padding:22px 20px;border:1px solid #e8bfd1;border-radius:22px;background:#fff8fb;color:#755064;line-height:2;font-size:13px;text-align:right;white-space:pre-line}\n.notice strong{display:block;color:#9b416e;font-size:16px;margin-bottom:8px}
 .heart-float{position:fixed;bottom:-30px;z-index:5;pointer-events:none;animation:rise linear forwards}
 #confetti{position:fixed;inset:0;pointer-events:none;z-index:10}
 @keyframes beat{50%{transform:scale(1.16)}}@keyframes float{50%{transform:translateY(-12px)}}@keyframes rise{to{transform:translateY(-110vh) rotate(25deg);opacity:0}}
@@ -56,6 +58,7 @@ textarea{width:100%;min-height:125px;border:1px solid #efd3e1;border-radius:16px
 </style>
 </head>
 <body>
+<div class="demo-banner" role="note">هذا الموقع تجريبي بالكامل لعرض التصميم والتفاصيل</div>
 <div id="gate">
  <div class="glow g1"></div><div class="glow g2"></div>
  <main class="gate-card">
